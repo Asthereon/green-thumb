@@ -1,11 +1,7 @@
-package com.asthereon.green_thumb.ItemType;
+package com.asthereon.green_thumb;
 
-import com.asthereon.green_thumb.GreenThumbConfig;
 import net.runelite.api.Client;
-import net.runelite.api.InventoryID;
-import net.runelite.api.ItemComposition;
 import net.runelite.api.Skill;
-import net.runelite.client.game.ItemManager;
 import net.runelite.client.util.ColorUtil;
 
 import java.awt.*;

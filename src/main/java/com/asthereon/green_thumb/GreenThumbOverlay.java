@@ -1,6 +1,5 @@
 package com.asthereon.green_thumb;
 
-import com.asthereon.green_thumb.ItemType.Seed;
 import net.runelite.api.*;
 import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
