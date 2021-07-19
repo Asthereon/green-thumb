@@ -34,14 +34,12 @@ public class GreenThumbPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		log.info("Green Thumb started!");
 		overlayManager.add(greenThumbOverlay);
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		log.info("Green Thumb stopped!");
 		overlayManager.remove(greenThumbOverlay);
 	}
 

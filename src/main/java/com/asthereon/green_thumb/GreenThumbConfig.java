@@ -6,7 +6,7 @@ import net.runelite.client.config.ConfigItem;
 
 import java.awt.*;
 
-@ConfigGroup("example")
+@ConfigGroup("greenthumb")
 public interface GreenThumbConfig extends Config
 {
 	@ConfigItem(
