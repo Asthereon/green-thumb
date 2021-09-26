@@ -99,10 +99,10 @@ public enum Seed {
     KRONOS_SEED("Kronos seed","Anima",76,1,"","","Provides a chance for farming patches to skip a growth stage."),
     IASOR_SEED("Iasor seed","Anima",76,1,"","","Decreases the chance of farming patches becoming diseased."),
     ATTAS_SEED("Attas seed","Anima",76,1,"","","Increases the yield of farming patches."),
-    TEAK_TREE_SEED("Teak tree seed","Hardwood",35,1,"Limpwurt root x 15","","Source of teak logs"),
+    TEAK_SEED("Teak seed","Hardwood",35,1,"Limpwurt root x 15","","Source of teak logs"),
     TEAK_SEEDLING("Teak seedling","Hardwood",35,1,"Limpwurt root x 15","","Source of teak logs"),
     TEAK_SAPLING("Teak sapling","Hardwood",35,1,"Limpwurt root x 15","","Source of teak logs"),
-    MAHOGANY_TREE_SEED("Mahogany tree seed","Hardwood",55,1,"Yanillian hops x 25","","Source of mahogany logs"),
+    MAHOGANY_SEED("Mahogany seed","Hardwood",55,1,"Yanillian hops x 25","","Source of mahogany logs"),
     MAHOGANY_SEEDLING("Mahogany seedling","Hardwood",55,1,"Yanillian hops x 25","","Source of mahogany logs"),
     MAHOGANY_SAPLING("Mahogany sapling","Hardwood",55,1,"Yanillian hops x 25","","Source of mahogany logs"),
     CALQUAT_TREE_SEED("Calquat tree seed","Calquat",72,1,"Poison ivy berries x 8","","Making Calquat kegs","Damaging Broodoo victims"),
@@ -168,36 +168,56 @@ public enum Seed {
     }
 
     public String getTooltip(GreenThumbConfig config, Client client, int itemAmount) {
-        StringBuilder msg = new StringBuilder(ColorUtil.wrapWithColorTag(name, Color.WHITE));
+        StringBuilder msg = new StringBuilder();
+
+        boolean isFirstLine = true;
+
+        if (config.showItemName()) {
+            msg.append(ColorUtil.wrapWithColorTag(name + " ", config.itemNameColor()));
+            isFirstLine = false;
+        }
 
         if (config.showLevelRequirement()) {
-            msg.append(" (").append(getLevelDisplay(config, client)).append(")");
+            msg.append("(").append(getLevelDisplay(config, client)).append(")");
+            isFirstLine = false;
         }
 
         if (config.showSeedType()) {
-            msg.append("</br>Type: ").append(type);
+            isFirstLine = insertLineBreak(msg, isFirstLine);
+            msg.append("Type: ").append(type);
         }
 
         if (config.showSeedsPerPatch()) {
-            msg.append("</br>Seeds Per Patch: ").append(getRequiredAmountDisplay(config, itemAmount));
+            isFirstLine = insertLineBreak(msg, isFirstLine);
+            msg.append("Seeds Per Patch: ").append(getRequiredAmountDisplay(config, itemAmount));
         }
 
         if (config.showProtectionPayment() && protectionPayment.length() > 0) {
-            msg.append("</br>Protection Payment: ").append(protectionPayment);
+            isFirstLine = insertLineBreak(msg, isFirstLine);
+            msg.append("Protection Payment: ").append(protectionPayment);
         }
 
         if (config.showProtectionFlowers() && protectionFlowers.length() > 0) {
-            msg.append("</br>Protection Flowers: ").append(protectionFlowers);
+            isFirstLine = insertLineBreak(msg, isFirstLine);
+            msg.append("Protection Flowers: ").append(protectionFlowers);
         }
 
         if (config.showUses()) {
-            msg.append("</br>Uses: ");
+            insertLineBreak(msg, isFirstLine);
+            msg.append("Uses: ");
             for (String use : uses) {
                 msg.append("</br>- ").append(use);
             }
         }
 
         return msg.toString();
+    }
+
+    private boolean insertLineBreak(StringBuilder msg, boolean isFirstLine) {
+        if (!isFirstLine) {
+            msg.append("</br>");
+        }
+        return false;
     }
 }
 
