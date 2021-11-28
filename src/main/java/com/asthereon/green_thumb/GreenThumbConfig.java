@@ -51,6 +51,26 @@ public interface GreenThumbConfig extends Config
 
 	@ConfigItem(
 			position = 4,
+			keyName = "showGrowthTime",
+			name = "Show Growth Time",
+			description = "Show the average time for a seed to grow."
+	)
+	default boolean showGrowthTime() {
+		return true;
+	}
+
+	@ConfigItem(
+			position = 5,
+			keyName = "showGrowthCycles",
+			name = "Show Growth Cycles",
+			description = "Show the average number and length of the growth cycles for a seed."
+	)
+	default boolean showGrowthCycles() {
+		return true;
+	}
+
+	@ConfigItem(
+			position = 6,
 			keyName = "showProtectionPayment",
 			name = "Show Protection Payment",
 			description = "Show the payment for a farmer to protect a seed on hover."
@@ -60,7 +80,7 @@ public interface GreenThumbConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 5,
+			position = 7,
 			keyName = "showProtectionFlowers",
 			name = "Show Protection Flowers",
 			description = "Show the flowers that can be used to protect a seed on hover."
@@ -70,7 +90,7 @@ public interface GreenThumbConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 6,
+			position = 8,
 			keyName = "showUses",
 			name = "Show Uses",
 			description = "Show the uses for the crop harvested from a seed on hover."
@@ -80,7 +100,7 @@ public interface GreenThumbConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 7,
+			position = 9,
 			keyName = "metRequirementColor",
 			name = "Met Requirement Color",
 			description = "Configures the text color used when a requirement is met"
@@ -91,7 +111,7 @@ public interface GreenThumbConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 8,
+			position = 10,
 			keyName = "notMetRequirementColor",
 			name = "Not Met Requirement Color",
 			description = "Configures the text color used when a requirement is not met"
@@ -102,7 +122,7 @@ public interface GreenThumbConfig extends Config
 	}
 
 	@ConfigItem(
-			position = 9,
+			position = 11,
 			keyName = "itemNameColor",
 			name = "Item Name Color",
 			description = "Configures the text color used for the name of the item on hover."
