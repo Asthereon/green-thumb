@@ -128,4 +128,34 @@ public interface GreenThumbConfig extends Config
 			description = "Configures the text color used for the name of the item on hover."
 	)
 	default Color itemNameColor() { return Color.WHITE; }
+
+	@ConfigItem(
+			position = 12,
+			keyName = "showPlantXP",
+			name = "Show Plant XP",
+			description = "Show the experience gained for planting the seed on hover."
+	)
+	default boolean showPlantXP() {
+		return false;
+	}
+
+	@ConfigItem(
+			position = 13,
+			keyName = "showCheckHealthXP",
+			name = "Show Check Health XP",
+			description = "Show the experience gained for checking the health of the seed on hover (if applicable)."
+	)
+	default boolean showCheckHealthXP() {
+		return true;
+	}
+
+	@ConfigItem(
+			position = 14,
+			keyName = "showHarvestXP",
+			name = "Show Harvest XP",
+			description = "Show the experience gained for each harvest of the seed on hover (if applicable)."
+	)
+	default boolean showHarvestXP() {
+		return false;
+	}
 }
