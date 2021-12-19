@@ -133,7 +133,8 @@ public enum Seed {
     }
 
     public static Seed getSeedFromItemName(String itemName) {
-        return itemNameToSeed.get(itemName);
+        // Remove the watered status of seedlings if present
+        return itemNameToSeed.get(itemName.replace(" (w)", ""));
     }
 
     String name;
@@ -223,7 +224,9 @@ public enum Seed {
             isFirstLine = insertLineBreak(msg, isFirstLine);
             msg.append("Uses: ");
             for (String use : uses) {
-                msg.append("</br>- ").append(use);
+                if (!use.equals("")) {
+                    msg.append("</br>- ").append(use);
+                }
             }
         }
 
