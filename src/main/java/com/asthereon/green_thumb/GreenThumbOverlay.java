@@ -18,6 +18,9 @@ public class GreenThumbOverlay extends Overlay {
     private static final int INVENTORY_ITEM_WIDGETID = WidgetInfo.INVENTORY.getPackedId();
     private static final int BANK_ITEM_WIDGETID = WidgetInfo.BANK_ITEM_CONTAINER.getPackedId();
     private static final int BANKED_INVENTORY_ITEM_WIDGETID = WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId();
+    private static final int SEED_VAULT_WIDGETID = WidgetInfo.SEED_VAULT_ITEM_CONTAINER.getPackedId();
+    private static final int SEED_VAULT_INVENTORY_WIDGETID = WidgetInfo.SEED_VAULT_INVENTORY_ITEMS_CONTAINER.getPackedId();
+    private static final int GROUP_STORAGE_ITEM_WIDGETID = WidgetInfo.GROUP_STORAGE_ITEM_CONTAINER.getPackedId();
 
     private final Client client;
     private final TooltipManager tooltipManager;
@@ -81,6 +84,10 @@ public class GreenThumbOverlay extends Overlay {
                     case WidgetID.INVENTORY_GROUP_ID:
                     case WidgetID.BANK_GROUP_ID:
                     case WidgetID.BANK_INVENTORY_GROUP_ID:
+                    case WidgetID.SEED_VAULT_GROUP_ID:
+                    case WidgetID.SEED_VAULT_INVENTORY_GROUP_ID:
+                    // case WidgetID.SEED_BOX_GROUP_ID:  todo not sure how to find the seed box container, if even possible currently
+                    case WidgetID.GROUP_STORAGE_GROUP_ID:
                         Optional<ItemContainer> container = getContainer(widgetId);
                         if (container.isPresent())
                         {
@@ -108,13 +115,17 @@ public class GreenThumbOverlay extends Overlay {
 
     private Optional<ItemContainer> getContainer(int widgetId)
     {
-        if (widgetId == INVENTORY_ITEM_WIDGETID || widgetId == BANKED_INVENTORY_ITEM_WIDGETID)
-        {
+        if (widgetId == INVENTORY_ITEM_WIDGETID || widgetId == BANKED_INVENTORY_ITEM_WIDGETID || widgetId == SEED_VAULT_INVENTORY_WIDGETID) {
             return Optional.ofNullable(client.getItemContainer(InventoryID.INVENTORY));
         }
-        else if (widgetId == BANK_ITEM_WIDGETID)
-        {
+        else if (widgetId == BANK_ITEM_WIDGETID) {
             return Optional.ofNullable(client.getItemContainer(InventoryID.BANK));
+        }
+        else if (widgetId == SEED_VAULT_WIDGETID) {
+            return Optional.ofNullable(client.getItemContainer(InventoryID.SEED_VAULT));
+        }
+        else if (widgetId == GROUP_STORAGE_ITEM_WIDGETID) {
+            return Optional.ofNullable(client.getItemContainer(InventoryID.GROUP_STORAGE));
         }
         return Optional.empty();
     }
