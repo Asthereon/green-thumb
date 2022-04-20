@@ -71,7 +71,8 @@ public class GreenThumbOverlay extends Overlay {
 
         switch (action)
         {
-            case ITEM_USE_ON_WIDGET:
+            case WIDGET_USE_ON_ITEM:
+            case WIDGET_TARGET:
             case CC_OP:
             case ITEM_USE:
             case ITEM_FIRST_OPTION:
