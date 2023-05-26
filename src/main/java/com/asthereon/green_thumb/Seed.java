@@ -23,7 +23,7 @@ public enum Seed {
     ROSEMARY_SEED("Rosemary seed","Flower",12,0,66.5,4,5,11,1,"","","Making Impling jars","Protecting cabbage plants","","","","",""),
     NASTURTIUM_SEED("Nasturtium seed","Flower",19.5,0,111,4,5,24,1,"","","Making Imp repellent","Protecting watermelon plants","Payment to protect wildblood hops. (1)","","","",""),
     WOAD_SEED("Woad seed","Flower",20.5,0,115.5,4,5,25,1,"","","Making various dyes","","","","","",""),
-    LIMPWURT_SEED("Limpwurt seed","Flower",21.5,0,120,4,5,26,1,"","","(Super) Strength potion ingredient","","","","","",""),
+    LIMPWURT_SEED("Limpwurt seed","Flower",21.5,0,120,4,5,26,1,"","","(Super) Strength potion ingredient","Payment to protect Teak Trees (15)","","","","",""),
     WHITE_LILY_SEED("White lily seed","Flower",42,0,250,4,5,58,1,"","","Protects all neighboring allotments from disease","","","","","",""),
     GUAM_SEED("Guam seed","Herb",11,0,12.5,4,20,9,1,"","","Ingredient of Attack potion","Ingredient of Guam tar","Ingredient of Guthix rest","","","",""),
     MARRENTILL_SEED("Marrentill seed","Herb",13.5,0,15,4,20,14,1,"","","Ingredient of Antipoison","Ingredient of Guthix rest","Burning incense","","","",""),
