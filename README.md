@@ -1,4 +1,4 @@
-# Green Thumb [![Plugin Installs](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/installs/plugin/green-thumb)](https://runelite.net/plugin-hub/Asthereon) [![Plugin Rank](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/rank/plugin/green-thumb)](https://runelite.net/plugin-hub)
+# Green Thumb [![Plugin Installs](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/installs/plugin/green-thumb)](https://runelite.net/plugin-hub/Asthereon) [![Plugin Rank](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/rank/plugin/green-thumb)](https://runelite.net/plugin-hub)
 This plugin shows information about various crops such as:
 * Level required to plant the crop
 * Patch type to plant the crop in
