@@ -45,8 +45,11 @@ public enum Seed {
     ASGARNIAN_SEED("Asgarnian seed","Hops",10.9,0,130.9,5,10,8,4,"Onions(10) x 1","","Asgarnian ale ingredient ","","","","","",""),
     JUTE_SEED("Jute seed","Hops",13,0,158,5,10,13,3,"Barley malt x 6","","Weaving an empty sack on a loom","Weaving drift nets for drift net fishing","Payment to protect sweetcorn allotment (10)","","","",""),
     YANILLIAN_SEED("Yanillian seed","Hops",14.5,0,174.5,6,10,16,4,"Tomatoes(5) x 1","","Wizard's mind bomb ingredient ","Payment to protect Mahogany Trees (25) ","","","","",""),
+    FLAX_SEED("Flax seed","Hops",16,0,17.5,3,20,18,3,"Grain x 6","","Bow string","Linen yarn","Payment to protect hemp plants (6)"),
     KRANDORIAN_SEED("Krandorian seed","Hops",17.5,0,212.5,7,10,21,4,"Cabbage(10) x 3","","Dragon bitter ingredient ","","","","","",""),
     WILDBLOOD_SEED("Wildblood seed","Hops",23,0,283,8,10,28,4,"Nasturtiums x 1","","Slayer's respite ingredient ","","","","","",""),
+    HEMP_SEED("Hemp seed","Hops",33,0,37,4,20,37,3,"Flax x 6","","Hemp yarn","Payment to protect cotton plants (6)"),
+    COTTON_SEED("Cotton seed","Hops",72,0,82,5,20,71,3,"Hemp x 6","","Cotton yarn"),
     REDBERRY_SEED("Redberry seed","Bush",11.5,64,4.5,5,20,10,1,"Cabbages(10) x 4","","Redberry pie ingredient","Making red dye","","","","",""),
     CADAVABERRY_SEED("Cadavaberry seed","Bush",18,102.5,7,6,20,22,1,"Tomatoes(5) x 3","","Making Cadava potion","","","","","",""),
     DWELLBERRY_SEED("Dwellberry seed","Bush",31.5,177.5,12,7,20,36,1,"Strawberries(5) x 3","","Quest item - Plague City","Cooking ingredient","","","","",""),
@@ -106,6 +109,15 @@ public enum Seed {
     MAHOGANY_SEED("Mahogany seed","Hardwood",63,15720,0,8,640,55,1,"Yanillian hops x 25","","Source of mahogany logs","","","","","",""),
     MAHOGANY_SEEDLING("Mahogany seedling","Hardwood",63,15720,0,8,640,55,1,"Yanillian hops x 25","","Source of mahogany logs","","","","","",""),
     MAHOGANY_SAPLING("Mahogany sapling","Hardwood",63,15720,0,8,640,55,1,"Yanillian hops x 25","","Source of mahogany logs","","","","","",""),
+    CAMPHOR_SEED("Camphor seed","Hardwood",88,17840,0,8,640,66,1,"White berry x 10","","Source of camphor logs"),
+    CAMPHOR_SEEDLING("Camphor seedling","Hardwood",88,17840,0,8,640,66,1,"White berry x 10","","Source of camphor logs"),
+    CAMPHOR_SAPLING("Camphor sapling","Hardwood",88,17840,0,8,640,66,1,"White berry x 10","","Source of camphor logs"),
+    IRONWOOD_SEED("Ironwood seed","Hardwood",145,20380,0,8,640,80,1,"Curry leaf x 10","","Source of ironwood logs"),
+    IRONWOOD_SEEDLING("Ironwood seedling","Hardwood",145,20380,0,8,640,80,1,"Curry leaf x 10","","Source of ironwood logs"),
+    IRONWOOD_SAPLING("Ironwood sapling","Hardwood",145,20380,0,8,640,80,1,"Curry leaf x 10","","Source of ironwood logs"),
+    ROSEWOOD_SEED("Rosewood seed","Hardwood",252,23100,0,10,640,92,1,"Dragonfruit x 8","","Source of rosewood logs"),
+    ROSEWOOD_SEEDLING("Rosewood seedling","Hardwood",252,23100,0,10,640,92,1,"Dragonfruit x 8","","Source of rosewood logs"),
+    ROSEWOOD_SAPLING("Rosewood sapling","Hardwood",252,23100,0,10,640,92,1,"Dragonfruit x 8","","Source of rosewood logs"),
     CALQUAT_TREE_SEED("Calquat tree seed","Calquat",129.5,12096,0,8,160,72,1,"Poison ivy berries x 8","","Making Calquat kegs","Damaging Broodoo victims","","","","",""),
     CALQUAT_SEEDLING("Calquat seedling","Calquat",129.5,12096,0,8,160,72,1,"Poison ivy berries x 8","","Making Calquat kegs","Damaging Broodoo victims","","","","",""),
     CALQUAT_SAPLING("Calquat sapling","Calquat",129.5,12096,0,8,160,72,1,"Poison ivy berries x 8","","Making Calquat kegs","Damaging Broodoo victims","","","","",""),
@@ -122,7 +134,10 @@ public enum Seed {
     REDWOOD_SEEDLING("Redwood seedling","Redwood",230,22450,0,10,640,90,1,"Dragonfruit x 6","","Source of redwood logs","","","","","",""),
     REDWOOD_SAPLING("Redwood sapling","Redwood",230,22450,0,10,640,90,1,"Dragonfruit x 6","","Source of redwood logs","","","","","",""),
     CACTUS_SEED("Cactus seed","Cactus",66.5,374,25,7,80,55,1,"Cadava berries x 6","","Weapon poison+ ingredient","Payment to protect yew tree (10)","","","","",""),
-    POTATO_CACTUS_SEED("Potato cactus seed","Cactus",68,230,68,7,10,64,1,"Snape grass x 8","","Magic potion ingredient","Payment to protect Celastrus tree (8)","","","","",""),;
+    POTATO_CACTUS_SEED("Potato cactus seed","Cactus",68,230,68,7,10,64,1,"Snape grass x 8","","Magic potion ingredient","Payment to protect Celastrus tree (8)","","","","",""),
+    ELKHORN_FRAG("Elkhorn frag","Coral",20.5,0,24,4,40,28,1,"Giant seaweed x 5","","Anti-odour salt","Haemostatic poultice"),
+    PILLAR_FRAG("Pillar frag","Coral",52,0,60,4,40,52,1,"Elkhorn coral x 5","","Super fishing potion","Super hunter potion"),
+    UMBRAL_FRAG("Umbral frag","Coral",136,0,159,4,40,77,1,"Pillar coral x 5","","Armadyl brew");
 
     private static final Map<String, Seed> itemNameToSeed = new HashMap<>();
 
