@@ -1,8 +1,9 @@
 package com.asthereon.green_thumb;
 
 import net.runelite.api.*;
-import net.runelite.api.widgets.WidgetID;
-import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.gameval.InterfaceID;
+import net.runelite.api.gameval.InventoryID;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayPosition;
@@ -15,12 +16,6 @@ import java.awt.*;
 import java.util.Optional;
 
 public class GreenThumbOverlay extends Overlay {
-    private static final int INVENTORY_ITEM_WIDGETID = WidgetInfo.INVENTORY.getPackedId();
-    private static final int BANK_ITEM_WIDGETID = WidgetInfo.BANK_ITEM_CONTAINER.getPackedId();
-    private static final int BANKED_INVENTORY_ITEM_WIDGETID = WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER.getPackedId();
-    private static final int SEED_VAULT_WIDGETID = WidgetInfo.SEED_VAULT_ITEM_CONTAINER.getPackedId();
-    private static final int SEED_VAULT_INVENTORY_WIDGETID = WidgetInfo.SEED_VAULT_INVENTORY_ITEMS_CONTAINER.getPackedId();
-    private static final int GROUP_STORAGE_ITEM_WIDGETID = WidgetInfo.GROUP_STORAGE_ITEM_CONTAINER.getPackedId();
 
     private final Client client;
     private final TooltipManager tooltipManager;
@@ -47,7 +42,7 @@ public class GreenThumbOverlay extends Overlay {
             return null;
         }
 
-        final MenuEntry[] menuEntries = client.getMenuEntries();
+        final MenuEntry[] menuEntries = client.getMenu().getMenuEntries();
         final int last = menuEntries.length - 1;
 
         if (last < 0)
@@ -66,48 +61,32 @@ public class GreenThumbOverlay extends Overlay {
         }
 
         final MenuAction action = menuEntry.getType();
-        final int widgetId = menuEntry.getParam1();
-        final int groupId = WidgetInfo.TO_GROUP(widgetId);
+        final int componentID = menuEntry.getParam1();
 
         switch (action)
         {
-            case WIDGET_USE_ON_ITEM:
             case WIDGET_TARGET:
+            case WIDGET_TARGET_ON_WIDGET:
             case CC_OP:
-            case ITEM_USE:
-            case ITEM_FIRST_OPTION:
-            case ITEM_SECOND_OPTION:
-            case ITEM_THIRD_OPTION:
-            case ITEM_FOURTH_OPTION:
-            case ITEM_FIFTH_OPTION:
-                switch (groupId)
+            case CC_OP_LOW_PRIORITY:
+                Optional<ItemContainer> container = getContainer(componentID);
+                if (container.isPresent())
                 {
-                    case WidgetID.INVENTORY_GROUP_ID:
-                    case WidgetID.BANK_GROUP_ID:
-                    case WidgetID.BANK_INVENTORY_GROUP_ID:
-                    case WidgetID.SEED_VAULT_GROUP_ID:
-                    case WidgetID.SEED_VAULT_INVENTORY_GROUP_ID:
-                    // case WidgetID.SEED_BOX_GROUP_ID:  todo not sure how to find the seed box container, if even possible currently
-                    case WidgetID.GROUP_STORAGE_GROUP_ID:
-                        Optional<ItemContainer> container = getContainer(widgetId);
-                        if (container.isPresent())
-                        {
-                            Optional<Item> item = getContainerItem(container.get(), menuEntry.getParam0());
-                            if (item.isPresent())
-                            {
-                                String itemName = stripExtra(itemManager.getItemComposition(item.get().getId()).getName());
+                    Optional<Item> item = getContainerItem(container.get(), menuEntry.getParam0());
+                    if (item.isPresent())
+                    {
+                        String itemName = stripExtra(itemManager.getItemComposition(item.get().getId()).getName());
 
-                                Seed seed = Seed.getSeedFromItemName(itemName);
-                                if (seed != null) {
-                                    stringBuilder.append(seed.getTooltip(config, client, item.get().getQuantity()));
-                                }
-                            }
-                            if (stringBuilder.length() > 0)
-                            {
-                                addTooltip();
-                            }
-                            break;
+                        Seed seed = Seed.getSeedFromItemName(itemName);
+                        if (seed != null) {
+                            stringBuilder.append(seed.getTooltip(config, client, item.get().getQuantity()));
                         }
+                    }
+                    if (stringBuilder.length() > 0)
+                    {
+                        addTooltip();
+                    }
+                    break;
                 }
                 break;
         }
@@ -116,17 +95,21 @@ public class GreenThumbOverlay extends Overlay {
 
     private Optional<ItemContainer> getContainer(int widgetId)
     {
-        if (widgetId == INVENTORY_ITEM_WIDGETID || widgetId == BANKED_INVENTORY_ITEM_WIDGETID || widgetId == SEED_VAULT_INVENTORY_WIDGETID) {
-            return Optional.ofNullable(client.getItemContainer(InventoryID.INVENTORY));
+        int interfaceID = WidgetUtil.componentToInterface(widgetId);
+        if (interfaceID == InterfaceID.INVENTORY || interfaceID == InterfaceID.BANKSIDE || interfaceID == InterfaceID.SEED_VAULT_DEPOSIT) {
+            return Optional.ofNullable(client.getItemContainer(InventoryID.INV));
         }
-        else if (widgetId == BANK_ITEM_WIDGETID) {
+        else if (interfaceID == InterfaceID.BANKMAIN) {
             return Optional.ofNullable(client.getItemContainer(InventoryID.BANK));
         }
-        else if (widgetId == SEED_VAULT_WIDGETID) {
+        else if (interfaceID == InterfaceID.SEED_VAULT) {
             return Optional.ofNullable(client.getItemContainer(InventoryID.SEED_VAULT));
         }
-        else if (widgetId == GROUP_STORAGE_ITEM_WIDGETID) {
-            return Optional.ofNullable(client.getItemContainer(InventoryID.GROUP_STORAGE));
+        else if (interfaceID == InterfaceID.SHARED_BANK) {
+            return Optional.ofNullable(client.getItemContainer(InventoryID.INV_GROUP_TEMP));
+        }
+        else if (interfaceID == InterfaceID.HOSIDIUS_SEEDBOX) {
+            return Optional.ofNullable(client.getItemContainer(InventoryID.SEED_BOX));
         }
         return Optional.empty();
     }
