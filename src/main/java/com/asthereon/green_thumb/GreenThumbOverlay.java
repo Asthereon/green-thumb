@@ -21,23 +21,25 @@ public class GreenThumbOverlay extends Overlay {
     private final TooltipManager tooltipManager;
     private final ItemManager itemManager;
     private final GreenThumbConfig config;
+    private final GreenThumbPlugin plugin;
 
     private final StringBuilder stringBuilder = new StringBuilder();
 
     @Inject
-    GreenThumbOverlay(Client client, TooltipManager tooltipManager, ItemManager itemManager, GreenThumbConfig config)
+    GreenThumbOverlay(Client client, TooltipManager tooltipManager, ItemManager itemManager, GreenThumbConfig config, GreenThumbPlugin plugin)
     {
         setPosition(OverlayPosition.DYNAMIC);
         this.client = client;
         this.tooltipManager = tooltipManager;
         this.itemManager = itemManager;
         this.config = config;
+        this.plugin = plugin;
     }
 
     @Override
     public Dimension render(Graphics2D graphics)
     {
-        if (client.isMenuOpen())
+        if (client.isMenuOpen() || !plugin.shouldShowTooltip())
         {
             return null;
         }

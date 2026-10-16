@@ -3,12 +3,21 @@ package com.asthereon.green_thumb;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.ConfigSection;
+import net.runelite.client.config.Keybind;
 
 import java.awt.*;
 
 @ConfigGroup("greenthumb")
 public interface GreenThumbConfig extends Config
 {
+	@ConfigSection(
+			name = "Hotkey",
+			description = "Only show the seed tooltip while a hotkey is held.",
+			position = 15
+	)
+	String hotkeySection = "hotkey";
+
 	@ConfigItem(
 			position = 0,
 			keyName = "showItemName",
@@ -157,5 +166,27 @@ public interface GreenThumbConfig extends Config
 	)
 	default boolean showHarvestXP() {
 		return false;
+	}
+
+	@ConfigItem(
+			position = 16,
+			keyName = "hotkeyEnabled",
+			name = "Require Hotkey",
+			description = "Hide the seed tooltip on hover unless the hotkey is held down.",
+			section = hotkeySection
+	)
+	default boolean hotkeyEnabled() {
+		return false;
+	}
+
+	@ConfigItem(
+			position = 17,
+			keyName = "tooltipHotkey",
+			name = "Hotkey",
+			description = "Hold this key while hovering a seed to show the tooltip.",
+			section = hotkeySection
+	)
+	default Keybind tooltipHotkey() {
+		return Keybind.SHIFT;
 	}
 }
