@@ -3,6 +3,7 @@ package com.asthereon.green_thumb;
 import net.runelite.api.*;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.InventoryID;
+import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.overlay.Overlay;
@@ -74,14 +75,15 @@ public class GreenThumbOverlay extends Overlay {
                 Optional<ItemContainer> container = getContainer(componentID);
                 if (container.isPresent())
                 {
-                    Optional<Item> item = getContainerItem(container.get(), menuEntry.getParam0());
-                    if (item.isPresent())
+                    // Read the hovered item from its widget: in the seed vault the widget index is not the container slot
+                    Widget widget = menuEntry.getWidget();
+                    if (widget != null && widget.getItemId() != -1)
                     {
-                        String itemName = stripExtra(itemManager.getItemComposition(item.get().getId()).getName());
+                        String itemName = stripExtra(itemManager.getItemComposition(widget.getItemId()).getName());
 
                         Seed seed = Seed.getSeedFromItemName(itemName);
                         if (seed != null) {
-                            stringBuilder.append(seed.getTooltip(config, client, item.get().getQuantity()));
+                            stringBuilder.append(seed.getTooltip(config, client, widget.getItemQuantity()));
                         }
                     }
                     if (stringBuilder.length() > 0)
@@ -114,11 +116,6 @@ public class GreenThumbOverlay extends Overlay {
             return Optional.ofNullable(client.getItemContainer(InventoryID.SEED_BOX));
         }
         return Optional.empty();
-    }
-
-    private Optional<Item> getContainerItem(ItemContainer container, int itemId)
-    {
-        return Optional.ofNullable(container.getItem(itemId));
     }
 
     private void addTooltip()
