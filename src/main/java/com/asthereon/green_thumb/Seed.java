@@ -36,6 +36,7 @@ public enum Seed {
     AVANTOE_SEED("Avantoe seed","Herb",54.5,0,61.5,4,20,50,1,"","","Ingredient of Fishing potion","Ingredient of Super energy","Ingredient of Hunter potion","","","",""),
     KWUARM_SEED("Kwuarm seed","Herb",69,0,78,4,20,56,1,"","","Ingredient of Super strength","Ingredient of Weapon poison","","","","",""),
     SNAPDRAGON_SEED("Snapdragon seed","Herb",87.5,0,98.5,4,20,62,1,"","","Ingredient of Super restore","Ingredient of Sanfew serum","","","","",""),
+    HUASCA_SEED("Huasca seed","Herb",86.5,0,110,4,20,65,1,"","","Ingredient of Prayer regeneration potion","","","","","",""),
     CADANTINE_SEED("Cadantine seed","Herb",106.5,0,120,4,20,67,1,"","","Ingredient of Super defence","","","","","",""),
     LANTADYME_SEED("Lantadyme seed","Herb",134.5,0,151.5,4,20,73,1,"","","Ingredient of Antifire potion","Ingredient of Magic potion","","","","",""),
     DWARF_WEED_SEED("Dwarf weed seed","Herb",170.5,0,192,4,20,79,1,"","","Ingredient of Ranging potion","","","","","",""),
